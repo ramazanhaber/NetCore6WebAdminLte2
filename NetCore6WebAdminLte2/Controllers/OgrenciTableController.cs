@@ -47,7 +47,6 @@ namespace NetCore6WebAdminLte2.Controllers
                 var model = _context.OgrenciTable.Find(id);
                 return View(model);
 
-
             }
             catch (Exception)
             {
