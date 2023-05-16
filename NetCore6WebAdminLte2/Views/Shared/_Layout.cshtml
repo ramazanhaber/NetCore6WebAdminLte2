@@ -1,0 +1,307 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="~/adminLTE/plugins/toastr/toastr.min.css">
+    <link rel="stylesheet" href="~/adminLTE/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/adminLTE/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+    <link rel="stylesheet" href="~/adminLTE/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/adminLTE/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="~/adminLTE/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link href="~/bs5/mds.bs.datetimepicker.style.css" rel="stylesheet" />
+
+
+    <link rel="stylesheet" href="~/adminLTE/dist/css/adminlte.min.css?v=3.2.0">
+    <script nonce="e4ad0f51-9978-485f-8ae7-5003c9ad7a58">(function (w, d) { !function (cO, cP, cQ, cR) { cO[cQ] = cO[cQ] || {}; cO[cQ].executed = []; cO.zaraz = { deferred: [], listeners: [] }; cO.zaraz.q = []; cO.zaraz._f = function (cS) { return function () { var cT = Array.prototype.slice.call(arguments); cO.zaraz.q.push({ m: cS, a: cT }) } }; for (const cU of ["track", "set", "debug"]) cO.zaraz[cU] = cO.zaraz._f(cU); cO.zaraz.init = () => { var cV = cP.getElementsByTagName(cR)[0], cW = cP.createElement(cR), cX = cP.getElementsByTagName("title")[0]; cX && (cO[cQ].t = cP.getElementsByTagName("title")[0].text); cO[cQ].x = Math.random(); cO[cQ].w = cO.screen.width; cO[cQ].h = cO.screen.height; cO[cQ].j = cO.innerHeight; cO[cQ].e = cO.innerWidth; cO[cQ].l = cO.location.href; cO[cQ].r = cP.referrer; cO[cQ].k = cO.screen.colorDepth; cO[cQ].n = cP.characterSet; cO[cQ].o = (new Date).getTimezoneOffset(); if (cO.dataLayer) for (const da of Object.entries(Object.entries(dataLayer).reduce(((db, dc) => ({ ...db[1], ...dc[1] }))))) zaraz.set(da[0], da[1], { scope: "page" }); cO[cQ].q = []; for (; cO.zaraz.q.length;) { const dd = cO.zaraz.q.shift(); cO[cQ].q.push(dd) } cW.defer = !0; for (const de of [localStorage, sessionStorage]) Object.keys(de || {}).filter((dg => dg.startsWith("_zaraz_"))).forEach((df => { try { cO[cQ]["z_" + df.slice(7)] = JSON.parse(de.getItem(df)) } catch { cO[cQ]["z_" + df.slice(7)] = de.getItem(df) } })); cW.referrerPolicy = "origin"; cW.src = "/cdn-cgi/zaraz/s.js?z=" + btoa(encodeURIComponent(JSON.stringify(cO[cQ]))); cV.parentNode.insertBefore(cW, cV) };["complete", "interactive"].includes(cP.readyState) ? zaraz.init() : cO.addEventListener("DOMContentLoaded", zaraz.init) }(w, d, "zarazData", "script"); })(window, document);</script>
+</head>
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a class="nav-link" asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a asp-controller="Bakim" asp-action="List" class="nav-link">Bakım Listesi</a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+
+
+
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fas fa-users mr-2"></i>
+                        <span class="badge badge-danger navbar-badge">1</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                        <span class="dropdown-item dropdown-header">Kullanıcı işlemleri</span>
+                        <div class="dropdown-divider"></div>
+
+                        <div class="dropdown-divider"></div>
+                        <a asp-controller="Login" asp-action="LogOut" class="dropdown-item">
+                            <i class="fas fa-users mr-2"></i> Çıkış Yap
+                            <span class="float-right text-muted text-sm"></span>
+                        </a>
+
+
+
+                    </div>
+                </li>
+
+
+            </ul>
+        </nav>
+
+
+        <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+            <a class="brand-link">
+
+                <span class="brand-text font-weight-light">Modül Müşteri</span>
+            </a>
+
+            <div class="sidebar">
+
+
+                <br />
+
+                <div class="form-inline">
+                    <div class="input-group" data-widget="sidebar-search">
+                        <input class="form-control form-control-sidebar" type="search" placeholder="Ara" aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-sidebar">
+                                <i class="fas fa-search fa-fw"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
+
+                        <li class="nav-item">
+                            <a asp-controller="OgrenciTable" asp-action="List" class="nav-link">
+                                <i class="nav-icon fas fa-edit"></i>
+                                <p>
+                                    Öğrenci 
+                                    <span class="right badge badge-danger">Listesi</span>
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a asp-controller="Bakim" asp-action="List" class="nav-link">
+                                <i class="nav-icon far fa-plus-square"></i>
+                                <p>
+                                    Bakım
+                                    <span class="right badge badge-info">Listesi</span>
+                                </p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Firma
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-controller="Firma" asp-action="List" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Firma Listesi</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="Firma" asp-action="Create" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Firma Oluştur</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="fas fa-file mr-2"></i>
+                                <p>
+                                    Firma Tipi
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a asp-controller="FirmaTipi" asp-action="List" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>FirmaTipi Listesi</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a asp-controller="FirmaTipi" asp-action="Create" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>FirmaTipi Oluştur</p>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </li>
+
+
+
+
+
+
+
+
+                    </ul>
+                </nav>
+
+            </div>
+
+        </aside>
+
+        <div class="content-wrapper">
+
+            <section class="content-header">
+            </section>
+
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    @*  <h3 class="card-title">ANA SAYFA</h3>*@
+                                </div>
+
+                                <div class="card-body">
+
+
+                                    @RenderBody()
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <footer class="main-footer">
+            <div class="float-right d-none d-sm-block">
+                <b>Version</b> 1.9.0
+            </div>
+            <strong>Copyright &copy; 2022-2050 <a>Oğuzhan Mendi</a>.</strong> All rights reserved.
+        </footer>
+
+        <aside class="control-sidebar control-sidebar-dark">
+
+        </aside>
+
+    </div>
+
+
+    <script src="~/adminLTE/plugins/jquery/jquery.min.js"></script>
+
+    <script src="~/adminLTE/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/adminLTE/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/adminLTE/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="~/adminLTE/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="~/adminLTE/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+    <script src="~/adminLTE/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="~/adminLTE/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+    <script src="~/adminLTE/plugins/jszip/jszip.min.js"></script>
+    <script src="~/adminLTE/plugins/pdfmake/pdfmake.min.js"></script>
+    <script src="~/adminLTE/plugins/pdfmake/vfs_fonts.js"></script>
+    <script src="~/adminLTE/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+    <script src="~/adminLTE/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+    <script src="~/adminLTE/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="~/adminLTE/dist/js/adminlte.min.js?v=3.2.0"></script>
+
+    <script src="~/bs5/mds.bs.datetimepicker.js"></script>
+
+
+
+
+
+
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "responsive": true, "lengthChange": false, "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+        });
+    </script>
+
+
+
+    <script>
+        function formGetir(e) {
+            e.preventDefault();
+            Swal.fire({
+
+                title: 'Firmayı Güncellemek İstediğine Emin Misin ?',
+                icon: 'question',
+                showcancelButton: true,
+
+
+            }).then(result => {
+                if (result.isConfirmed) {
+                    const myForm = document.getElementById('myForm');
+                    myForm.submit();
+                }
+            })
+        }
+
+
+
+
+
+        function alertSucces() {
+            Swal.fire('Excellent', 'Harika Başarıyla Ekledin.', 'Success')
+        }
+
+
+
+
+    </script>
+
+</body>
+</html>

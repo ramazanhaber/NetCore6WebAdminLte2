@@ -1,0 +1,31 @@
+﻿@model OgrenciTable
+<div class="col-md-12">
+    <!-- jquery validation -->
+    <div class="card card-primary">
+        <div class="card-header">
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form asp-action="Update" asp-controller="OgrenciTable" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Adı </label>
+                    <input type="text" class="form-control" asp-for="@Model.ad" placeholder="Adı">
+                    <span class="text-danger" asp-validation-for="ad"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Soy Adı: </label>
+                    <input type="text" class="form-control" asp-for="@Model.soyad" placeholder="Soy Ad">
+                    <span class="text-danger" asp-validation-for="soyad"></span>
+                </div>
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Değiştir</button>
+            </div>
+        </form>
+    </div>
+    <!-- /.card -->
+</div>
