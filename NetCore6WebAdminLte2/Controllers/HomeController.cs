@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NetCore6WebAdminLte2.Models;
+using System.Data;
 using System.Diagnostics;
 
 namespace NetCore6WebAdminLte2.Controllers
 {
+    [Authorize(Roles = "admin,member,member2")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

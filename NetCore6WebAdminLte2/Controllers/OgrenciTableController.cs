@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NetCore6WebAdminLte2.Models;
+using System.Data;
 
 namespace NetCore6WebAdminLte2.Controllers
 {
+    [Authorize(Roles = "member,admin")]
     public class OgrenciTableController : Controller
     {
 

@@ -9,5 +9,6 @@ namespace NetCore6WebAdminLte2.Models
 
         }
         public DbSet<OgrenciTable> OgrenciTable { get; set; }
+        public DbSet<Users> Users{ get; set; }
     }
 }
