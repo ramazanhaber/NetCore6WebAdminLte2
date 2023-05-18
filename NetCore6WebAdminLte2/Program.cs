@@ -13,7 +13,7 @@ builder.Services.AddDbContext<OgrenciContext>(opt =>
 });
 
 
-// rol Kullanýcý
+// rol için
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(a =>
 {
     a.Cookie.Name = "Cookie";
